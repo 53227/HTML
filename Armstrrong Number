@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Armstrong Number Checker</h1>
+        <input type="number" id="inputNumber" placeholder="Enter a number" min="0">
+        <button onclick="checkArmstrong()">Check</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function checkArmstrong() {
+            var num = parseInt(document.getElementById('inputNumber').value);
+            if (isNaN(num) || num < 0) {
+                document.getElementById('result').innerHTML = "Please enter a valid non-negative number.";
+                return;
+            }
+
+            var sum = 0;
+            var temp = num;
+            var digits = num.toString().length;
+
+            while (temp > 0) {
+                var digit = temp % 10;
+                sum += Math.pow(digit, digits);
+                temp = Math.floor(temp / 10);
+            }
+
+            var isArmstrong = (sum === num);
+            document.getElementById('result').innerHTML = "Result: " + (isArmstrong ? num + " is an Armstrong number." : num + " is not an Armstrong number.");
+        }
+    </script>
+</body>
+</html>
