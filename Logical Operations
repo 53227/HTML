@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="checkbox"] {
+            margin: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Logical Operations</h1>
+        <label>
+            <input type="checkbox" id="bool1"> Boolean 1
+        </label>
+        <label>
+            <input type="checkbox" id="bool2"> Boolean 2
+        </label>
+        <button onclick="performLogicalOperation('AND')">AND</button>
+        <button onclick="performLogicalOperation('OR')">OR</button>
+        <button onclick="performLogicalOperation('NOT')">NOT (Boolean 1)</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function performLogicalOperation(operator) {
+            var bool1 = document.getElementById('bool1').checked;
+            var bool2 = document.getElementById('bool2').checked;
+            var result;
+
+            switch (operator) {
+                case 'AND':
+                    result = bool1 && bool2;
+                    break;
+                case 'OR':
+                    result = bool1 || bool2;
+                    break;
+                case 'NOT':
+                    result = !bool1;
+                    break;
+                default:
+                    result = "Invalid operation.";
+            }
+
+            document.getElementById('result').innerHTML = "Result: " + result;
+        }
+    </script>
+</body>
+</html>
