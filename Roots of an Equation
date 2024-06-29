@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadratic Equation Solver</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quadratic Equation Solver</h1>
+        <p>Enter coefficients (a, b, c) of the quadratic equation (ax^2 + bx + c = 0):</p>
+        <input type="number" id="coefficientA" placeholder="Enter coefficient a">
+        <input type="number" id="coefficientB" placeholder="Enter coefficient b">
+        <input type="number" id="coefficientC" placeholder="Enter coefficient c">
+        <button onclick="solveQuadratic()">Solve</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function solveQuadratic() {
+            var a = parseFloat(document.getElementById('coefficientA').value);
+            var b = parseFloat(document.getElementById('coefficientB').value);
+            var c = parseFloat(document.getElementById('coefficientC').value);
+
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                document.getElementById('result').innerHTML = "Please enter valid numbers for all coefficients.";
+                return;
+            }
+
+            if (a === 0) {
+                document.getElementById('result').innerHTML = "Coefficient 'a' cannot be zero for a quadratic equation.";
+                return;
+            }
+
+            var discriminant = b * b - 4 * a * c;
+
+            if (discriminant > 0) {
+                var root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                var root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                document.getElementById('result').innerHTML = "Roots are real and different:<br>Root 1 = " + root1.toFixed(2) + "<br>Root 2 = " + root2.toFixed(2);
+            } else if (discriminant === 0) {
+                var root = -b / (2 * a);
+                document.getElementById('result').innerHTML = "Roots are real and equal:<br>Root 1 = Root 2 = " + root.toFixed(2);
+            } else {
+                var realPart = (-b / (2 * a)).toFixed(2);
+                var imaginaryPart = (Math.sqrt(-discriminant) / (2 * a)).toFixed(2);
+                document.getElementById('result').innerHTML = "Roots are complex:<br>Root 1 = " + realPart + " + " + imaginaryPart + "i<br>Root 2 = " + realPart + " - " + imaginaryPart + "i";
+            }
+        }
+    </script>
+</body>
+</html>
