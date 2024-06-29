@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power of a Number Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="number"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Power of a Number Calculator</h1>
+        <input type="number" id="baseNumber" placeholder="Enter base number">
+        <input type="number" id="exponent" placeholder="Enter exponent">
+        <button onclick="calculatePower()">Calculate Power</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculatePower() {
+            var base = parseFloat(document.getElementById('baseNumber').value);
+            var exponent = parseInt(document.getElementById('exponent').value);
+
+            if (isNaN(base) || isNaN(exponent)) {
+                document.getElementById('result').innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            var result = Math.pow(base, exponent);
+
+            document.getElementById('result').innerHTML = base + " raised to the power of " + exponent + " is: " + result;
+        }
+    </script>
+</body>
+</html>
