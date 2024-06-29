@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: calc(100% - 24px);
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>String Operations</h1>
+        <input type="text" id="inputString1" placeholder="Enter first string">
+        <input type="text" id="inputString2" placeholder="Enter second string (optional)">
+        <button onclick="concatenateStrings()">Concatenate</button>
+        <button onclick="convertToUpper()">Convert to Uppercase</button>
+        <button onclick="convertToLower()">Convert to Lowercase</button>
+        <button onclick="findLength()">Find Length</button>
+        <button onclick="extractSubstring()">Extract Substring (First 5 chars)</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function concatenateStrings() {
+            var str1 = document.getElementById('inputString1').value;
+            var str2 = document.getElementById('inputString2').value;
+            var result = str1 + str2;
+            document.getElementById('result').innerHTML = "Concatenated String: " + result;
+        }
+
+        function convertToUpper() {
+            var str = document.getElementById('inputString1').value;
+            var result = str.toUpperCase();
+            document.getElementById('result').innerHTML = "Uppercase String: " + result;
+        }
+
+        function convertToLower() {
+            var str = document.getElementById('inputString1').value;
+            var result = str.toLowerCase();
+            document.getElementById('result').innerHTML = "Lowercase String: " + result;
+        }
+
+        function findLength() {
+            var str = document.getElementById('inputString1').value;
+            var result = str.length;
+            document.getElementById('result').innerHTML = "Length of String: " + result;
+        }
+
+        function extractSubstring() {
+            var str = document.getElementById('inputString1').value;
+            var result = str.substring(0, 5);
+            document.getElementById('result').innerHTML = "Extracted Substring: " + result;
+        }
+    </script>
+</body>
+</html>
